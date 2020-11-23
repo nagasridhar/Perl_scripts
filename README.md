@@ -1,2 +1,2 @@
 # Perl_scripts
- Maintain all Perl scripts
+Perl scripts for FASTA file and other modifications
