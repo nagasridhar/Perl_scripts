@@ -30,16 +30,16 @@ $sequence[$n] .= $file;
 							}
 
 
-# my $header_length = scalar(@sequence)	
-#
-# print "The length of header, $header_length\n"	
-# for (my $i=0	 $i<@header	 $i++)
-# {
-# @temp = split(/\s/, $header[$i])	
-# $new_header[$i]=$carat.$temp[1]	
-# }
+#my $header_length = scalar(@sequence);	
 
-# foreach (my $i=0	 $i<@new_header	 $i++){
+#print "The length of header, $header_length\n";
+for (my $i=0;$i<@header; $i++)
+{
+@temp = split(/\s/, $header[$i]);	
+$new_header[$i]=$carat.$temp[1];	
+}
+
+# for (my $i=0; $i<@new_header;$i++){
 # 	print "$new_header[$i]\n"	
 # 	print "$sequence[$i]\n"	
 # }
@@ -67,9 +67,9 @@ $m++;
 #  $header_seq{$new_header[$x]} = $sequence[$x]	
 #   }
 
-keys %header_seq = @header;	
- for(my $x=0; $x<@header;$x++){
- $header_seq{$header[$x]} = $sequence[$x];
+keys %header_seq = @new_header;	
+ for(my $x=0; $x<@new_header;$x++){
+ $header_seq{$new_header[$x]} = $sequence[$x];
   }
 
 
