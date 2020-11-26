@@ -1,10 +1,11 @@
+##### This code helps split a FASTA file into smaller sizes, in its current format splits a FASTA file into 4 separate files ####
+
+
 use strict;
 use warnings;
-my $filename_fasta = $ARGV[0];
-#my $start = $ARGV[1];
-#my $end = $ARGV[2];
-my @header;
-my @sequence;
+my $filename_fasta = $ARGV[0]; ### Reading in the input file
+my @header;                    ### Array for saving the headers
+my @sequence;                  ### Array for saving the respective sequence files
 my $n=0;
 my $split;
 my $increment=0;
@@ -23,44 +24,24 @@ $sequence[$n] .= $file;
 			}
 							}
 
-# $start = $start - 1000;
-# $end = $end + 1000;
-# my $string = substr $sequence[1], $start, ($end-$start);
 
-# print "$string \n";
-#my $length = length($string);
-
-#print "Length of substring $length \n";
-
-
-my $header = scalar(@header);
+my $header_count = scalar(@header);                      #### Counting the number of headers in the file
 #print "No. of headers = $header\n";
 
-if ($header%2 ==0 ){
+if ($header%2 ==0 ){                                     ### Creating an if loop to make the split value as an even number
     $split = ($header/4);
         }
 
     else{
-        my $header_count = $header+1;
+        my $header_count_inc = $header+1;
         $split = ($header_count/4);
     }    
 
-    $increment = $split;
-#print "No. of genes in each output $split\n";
+    $increment = $split;                               ### Defining an increment variable for storing the split size
 
-# open(my $fh, '>', $output_file) or die "Could not open file '$output_file' $!";
-# foreach(@header){
-# 	my @name=split(/_/,$filename_fasta);
-# 	$name[2]=~ s/.fna.bed//g;
-# 	#print $fh "$name[1]\n";
-# 	print $fh "$name[2]\t$_\n";
-# 	#print "$_\n";
-# }
-
-while($increment<=scalar(@header)){
-$output_file = "output.$increment.fa";
+while($increment<=@header)){                           ### While loop for splitting the fasta file into 4 separate files
+$output_file = "output.$increment.fa";                 
 open(my $fh, '>', $output_file) or die "Could not open file '$output_file' $!";
-
 for ($initial=$initial; $initial<=$increment;$initial++){
     print $fh "$header[$initial]\n";
     print $fh "$sequence[$initial]\n";
