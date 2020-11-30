@@ -15,6 +15,7 @@ my $m=0;
 my @temp;
 my @new_header;
 my $carat=">";
+my $uscore="_";
 my @group;
 my $extsn = ".txt";
 
@@ -34,6 +35,6 @@ foreach(@header){
 	my @name=split(/_/,$filename_fasta);
 	$name[2]=~ s/.fna.bed//g;
 	#print $fh "$name[1]\n";
-	print $fh "$name[2]\t$_\n";
+	print $fh "$name[3]$uscore$name[4]$uscore$name[5]$uscore$name[6]$uscore$name[7]\t$_\n";
 	#print "$_\n";
 }
